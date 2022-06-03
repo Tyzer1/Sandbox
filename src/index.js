@@ -12,49 +12,16 @@ import './index.css';
 //   </React.StrictMode>
 // );
 
-class Clock extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {date: new Date()};
-  }
-
-  tick() {
-    this.setState({
-      date: new Date()
-    });
-  }
-
-  componentDidMount() {
-    this.timerID = setInterval(
-      () => this.tick(),
-      1000
-    );
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.timerID);
-  }
-
-  render() {
-    return (
-      <div>
-        <h1>Привет, мир!</h1>
-        <h2>Сейчас {this.state.date.toLocaleTimeString()}.</h2>
-      </div>
-    );
-  }
-}
-
 class Toggle extends React.Component {
   constructor(props) {
     super(props);
     this.state = {isToggleOn: true};
 
     // Эта привязка обязательна для работы `this` в колбэке.
-    this.handleClick = this.handleClick.bind(this);
+    //this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick() {
+  handleClick = () => {
     this.setState(prevState => ({
       isToggleOn: !prevState.isToggleOn
     }));

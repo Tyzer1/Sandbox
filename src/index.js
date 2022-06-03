@@ -10,24 +10,43 @@ import './index.css';
 //     <App />
 //   </React.StrictMode>
 // );
-class Welcome extends React.Component {
-  render(){
-    return <h1>Привет, {this.props.name}</h1>;
+
+class Clock extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {date: new Date()};
+  }
+
+  tick() {
+    this.setState({
+      date: new Date()
+    });
+  }
+
+  componentDidMount() {
+    this.timerID = setInterval(
+      () => this.tick(),
+      1000
+    );
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Привет, мир!</h1>
+        <h2>Сейчас {this.state.date.toLocaleTimeString()}.</h2>
+      </div>
+    );
   }
 }
 
-function App() {
-  return (
-    <div>
-      <Welcome name="Алиса" />
-      <Welcome name="Базилио" />
-      <Welcome name="Буратино" />
-    </div>
-  );
-}
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <App />
+  <Clock />
 );
 
 // If you want to start measuring performance in your app, pass a function

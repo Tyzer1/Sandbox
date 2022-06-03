@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+//import App from './App';
+//import reportWebVitals from './reportWebVitals';
 
 // const root = ReactDOM.createRoot(document.getElementById('root'));
 // root.render(
@@ -10,9 +10,24 @@ import reportWebVitals from './reportWebVitals';
 //     <App />
 //   </React.StrictMode>
 // );
+class Welcome extends React.Component {
+  render(){
+    return <h1>Привет, {this.props.name}</h1>;
+  }
+}
+
+function App() {
+  return (
+    <div>
+      <Welcome name="Алиса" />
+      <Welcome name="Базилио" />
+      <Welcome name="Буратино" />
+    </div>
+  );
+}
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <h1>Hello world!</h1>,
+  <App />
 );
 
 // If you want to start measuring performance in your app, pass a function
